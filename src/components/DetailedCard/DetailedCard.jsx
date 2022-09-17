@@ -4,9 +4,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import './DetailedCard.css';
 import axios from 'axios'
+import { useSelector } from "react-redux";
+import { userData } from "../../containers/User/userSlice";
 
 const DetailedCard = props => {
-    
+
+    const dataUser = useSelector(userData);
+
     const [data, setData] = useState({
         img: '',
         name: '',
@@ -40,6 +44,29 @@ const DetailedCard = props => {
         fetchPoke()
     },[])
 
+    const addPokemon = async(req, res)  =>{
+        try {
+            const config = {
+                headers: { "Authorization": `Bearer ${dataUser.token}` }
+            }
+            const poke = await axios.put(`http://localhost:3001/users/addpoke/${dataUser.user._id}`, {
+                        img: data.img,
+                        name: data.name,
+                        exp: data.exp,
+                        hp: data.hp,
+                        ataque: data.ataque,  
+                        defensa: data.defensa,
+                        especial: data.especial  
+            },config)
+            .then(res => {
+                alert('Pokemon capturado :D')
+            }).catch(err => {
+                console.log(err)
+            })
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     return (
         <div className="detailedCard">
@@ -51,6 +78,8 @@ const DetailedCard = props => {
             <p>ataque: {data.ataque}</p>
             <p>defensa: {data.defensa} </p>
             <p>especial: {data.especial} </p>
+
+            <button onClick={addPokemon}>Capturar</button>
             
         </div>
 

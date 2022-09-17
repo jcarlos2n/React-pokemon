@@ -3,7 +3,6 @@ import "./Login.css"
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, userData } from "../userSlice";
-// import { loginUser, userData } from "../userSlice";
 
 const Login = props => {
      const [credentials, setCredentials] =useState({nick: '', password: ''});
