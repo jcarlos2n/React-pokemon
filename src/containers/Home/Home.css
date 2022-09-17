@@ -1,0 +1,8 @@
+.homeWall{
+    height: 93.3vh;
+    width: 100vw;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

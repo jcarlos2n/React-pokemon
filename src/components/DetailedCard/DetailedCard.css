@@ -1,0 +1,12 @@
+
+
+.detailedCard{
+    background-color: yellow;
+    border: solid black 0.2em;
+    width: 25em;
+    height: 30em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -1,0 +1,19 @@
+.pokeWall{
+    min-height: 90vh;
+    height: auto;
+    width: 98.3vw;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    position: relative;
+}
+
+.detailedPoke{
+    background-color: transparent;
+    position: absolute;
+    z-index: 5;
+}
