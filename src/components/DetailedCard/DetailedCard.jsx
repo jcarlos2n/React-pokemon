@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -5,7 +6,6 @@ import './DetailedCard.css';
 import axios from 'axios'
 
 const DetailedCard = props => {
-// console.log(props.data.data.name)
     
     const [data, setData] = useState({
         img: '',
@@ -32,23 +32,18 @@ const DetailedCard = props => {
                         defensa: resp.data.stats[2].base_stat,
                         especial: resp.data.stats[3].base_stat               
                     })
-                    // console.log(resp.data.id)
                 })
             } catch (error) {
                 console.error(error)
             }
         }
         fetchPoke()
-        // setTimeout(() => {
-        //     console.log(data)
-        // }, 1000);
-     
     },[])
 
 
     return (
         <div className="detailedCard">
-            {/* <h1>{props.data.data.name}</h1> */}
+
             <img src={data.img} alt="" />
             <h3>{data.name}</h3>
             <p>experiencia: {data.exp}</p>
@@ -57,17 +52,9 @@ const DetailedCard = props => {
             <p>defensa: {data.defensa} </p>
             <p>especial: {data.especial} </p>
             
-            
-            {/* <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"".png" alt="" /> */}
         </div>
 
     )
-
-
-
-
-
-
 }
 
 export default DetailedCard

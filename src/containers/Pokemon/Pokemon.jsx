@@ -4,16 +4,23 @@ import { useEffect } from 'react';
 import { useState } from 'react'
 import PokemonCard from '../../components/PokemonCard/PokemonCard';
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
+
 import DetailedCard from '../../components/DetailedCard/DetailedCard';
+import { useSelector } from 'react-redux';
+import { userData } from '../User/userSlice';
 
 
 
 const Pokemon = props => {
     let [pokemons, setPokemons] = useState([]);
     const navigate = useNavigate();
-
+    const dataUser = useSelector(userData)
     useEffect(() => {
+
+        if (!dataUser?.user) {
+            navigate('/');
+        }
+        
         async function fetchPokemons(){
             await axios.get('https://pokeapi.co/api/v2/pokemon?offset=20&limit=99')
             .then(resp => {

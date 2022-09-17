@@ -6,10 +6,10 @@ import './App.css'
 import Home from './containers/Home/Home'
 import Login from './containers/User/Login/Login'
 import Pokemon from './containers/Pokemon/Pokemon'
-import Captura from './containers/Captura/Captura'
+import Profile from './containers/User/Profile/Profile'
+import Signup from './containers/User/Signup/Signup'
 
 function App() {
-
 
   return (
     <div className='app'>
@@ -18,8 +18,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/signup' element={<Signup/>} />
         <Route path='/pokemon' element={<Pokemon/>} />
-        <Route path='/captura' element={<Captura/>} />
+        <Route path='/profile' element={<Profile/>} />
       </Routes>
     </BrowserRouter>
     </div>

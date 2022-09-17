@@ -51,8 +51,9 @@ export const logOut = () => (dispatch) => {
     dispatch(logout());
 };
 
-export const registerUser = (nick, email, password) => async (dispatch) => {
+export const registerUser = (nick, password) => async (dispatch) => {
     try {
+        
         const user = await axios.post('http://localhost:3001/users/signup',
         {
             nick: nick,

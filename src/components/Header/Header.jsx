@@ -12,8 +12,9 @@ const Header = () => {
         return (
             <div className="container">
                 <NavLink to='/'>Home</NavLink>
-                <NavLink to='/login'>Login</NavLink>
-                {/* <NavLink></NavLink> */}
+                <NavLink to='/login'>Log In</NavLink>
+                <NavLink to='/signup'>Sign Up</NavLink>
+                
             </div>
         )
     }else{
@@ -21,6 +22,7 @@ const Header = () => {
             <div className="container">
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/pokemon'>Pokemon</NavLink>
+                <NavLink to='/profile'>Profile</NavLink>
                 {/* <NavLink></NavLink> */}
             </div>
         )
