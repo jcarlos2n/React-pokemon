@@ -45,7 +45,7 @@ const Update = props => {
                 setMsg({
                     txt: ''
                 })
-            }, 2000);
+            }, 3000);
         } else {
             const config = {
                 headers: { "Authorization": `Bearer ${userInfo.token}` }
@@ -59,7 +59,7 @@ const Update = props => {
                 setTimeout(() => {
                     getOut(),
                         navigate('/')
-                }, 2000);
+                }, 2200);
             }).catch(err => {
                 console.log(err)
             })
@@ -69,14 +69,16 @@ const Update = props => {
 
     return (
         <div className="loginWall">
+            <div className="backGround">
 
-            <label className="labelLogin">Nick</label>
-            <input onChange={handleInput} className="inputLogin" type="text" name="nick" />
+                <label className="labelLogin">Nick</label>
+                <input onChange={handleInput} className="inputLogin" type="text" name="nick" />
 
-            <button onClick={userUpdate()} className='submitLogin'>Update</button>
+                <button onClick={userUpdate()} className='submitLogin'>Update</button>
 
-            <div className="errorMessage">
-                {msg.txt}
+                <div className="errorMessage">
+                    {msg.txt}
+                </div>
             </div>
         </div>
     )

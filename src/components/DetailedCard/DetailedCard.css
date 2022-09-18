@@ -8,6 +8,7 @@
     justify-content: center;
     flex-direction: column;
     border-radius: 1em;
+    color: white;
 }
 
 .pokeImg{

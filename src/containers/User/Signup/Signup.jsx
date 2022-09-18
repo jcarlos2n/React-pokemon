@@ -56,18 +56,20 @@ const Signup = props => {
     }
 
     return (
-        <div className="loginWall">
+        <div className='loginWall'>
+            <div className="backGround">
 
-            <label className="labelLogin">Nick</label>
-            <input onChange={handleInput} className="inputLogin" type="text" name="nick" />
+                <label className="labelLogin">Nick</label>
+                <input onChange={handleInput} className="inputLogin" type="text" name="nick" />
 
-            <label className="labelLogin">Password</label>
-            <input onChange={handleInput} className="inputLogin" type="password" name="password" />
+                <label className="labelLogin">Password</label>
+                <input onChange={handleInput} className="inputLogin" type="password" name="password" />
 
-            <button onClick={userSignup} className="submitLogin" type="submit">Sign Up</button>
+                <button onClick={userSignup} className="submitLogin" type="submit">Sign Up</button>
 
-            <div className="errorMessage">
-                {msg.txt}
+                <div className="errorMessage">
+                    {msg.txt}
+                </div>
             </div>
         </div>
     )

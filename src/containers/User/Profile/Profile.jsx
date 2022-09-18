@@ -54,7 +54,7 @@ const Profile = props => {
                 <div className="listContainer">
                     <div>
                         <br></br>
-                        <h2>Has logrado capturar {user.length} pokemons, {dataUser.user.nick}</h2>
+                        <h2 className='titleCont'>Has logrado capturar {user.length} pokemons, {dataUser.user.nick}</h2>
                         <br></br>
                     </div>
                     <div className="list">
@@ -70,8 +70,7 @@ const Profile = props => {
             return (
                 <div className="elemTitle">
                     <br></br>
-                    <h3>No Users Registered. We are broke!</h3>
-                    <br></br>
+                    <h3 className='titleCont'>No has capturado ningún pokemon, clica en Pokemon para ir a capturarlos!</h3>
                 </div>
             )
         }
@@ -100,13 +99,15 @@ const Profile = props => {
     return (
 
         <div className='profileWall'>
-
+            <div className='containerPokemons'>
             <PokemonList />
             <button onClick={getOut} className='botonProfile'> Log out</button>
+            </div>
+            
 
             
             <div className='opcionesUser'>
-                <h3>Opciones de usuario</h3>
+                <h3 className='titleCont'>Opciones de usuario</h3>
                 <div>
                 <button onClick={deleteUser} className='botonProfile'> Delete User</button>
                 <button onClick={()=> navigate('/update')} className='botonProfile'> Update User</button>

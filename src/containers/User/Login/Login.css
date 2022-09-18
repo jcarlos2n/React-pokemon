@@ -1,28 +1,45 @@
+
+
+
+
+.backGround{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   background-color: rgba(0, 0, 0, 0.795);
+   padding: 1em;
+   border-radius: 1em;
+   color: white;
+   width: 20em;
+   height: 17em;
+}
 .loginWall{
+   
+    background-color: red;
     height: 93.3vh;
     width: 100vw;
-    background-color: red;
+    background-image: url('../../../assets/mick-haupt-KtTF68ZjBak-unsplash.jpg');
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
 .labelLogin{
     font-size: 1.2em;
     font-weight: 550;
+    
 }
 
 .inputLogin{
     height: 2em;
     width: 15em;
     border-radius: 1em;
+   
 }
 
 .submitLogin{
     margin: 1em;
-}
-
-.submitLogin{
     border-radius: 1em;
 }

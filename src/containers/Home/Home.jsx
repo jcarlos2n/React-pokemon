@@ -5,10 +5,15 @@ const Home = props => {
 
     return (
         <div className="homeWall">
-                <h1 className='title'>Welcome to my Pokemon App</h1>
+
+            <div className='title'>
+                <h3 className='tittleh3'>Welcome to</h3>
+                <h1 className='tittleh1'>My Pokemon App</h1>
+            </div>
+
         </div>
     )
-    
+
 }
 
 export default Home

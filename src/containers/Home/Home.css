@@ -1,3 +1,4 @@
+
 .homeWall{
     height: 93.3vh;
     width: 100vw;
@@ -11,8 +12,25 @@
 }
 
 .title {
-    background-color: rgba(240, 248, 255, 0.439);
+    background-color: rgba(240, 248, 255, 0.69);
+    font-family:'Copperplate, Papyrus, fantasy';
+    width: 44em;
     padding: 1em;
+    font-weight: 1000;
     border-radius: 1em;
     color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tittleh1{
+    margin-top: -0.3em;
+    font-size: 5em;
+   
+}
+
+.tittleh3{
+    font-size: 2em;
 }

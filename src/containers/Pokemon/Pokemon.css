@@ -3,6 +3,8 @@
     height: auto;
     width: 98.3vw;
     background-color: blueviolet;
+    background-image: url('../../assets/juan-manuel-nunez-mendez-y1IEnAYvMxY-unsplash.jpg');
+    background-size: cover;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -13,7 +15,7 @@
 }
 
 .detailedPoke{
-    background-color: green;
+    background-color: rgb(52, 52, 52);
     position: absolute;
     z-index: 5;
     padding: 0.4em;
