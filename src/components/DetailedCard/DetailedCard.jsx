@@ -6,10 +6,12 @@ import './DetailedCard.css';
 import axios from 'axios'
 import { useSelector } from "react-redux";
 import { userData } from "../../containers/User/userSlice";
+import { useNavigate } from "react-router";
 
 const DetailedCard = props => {
 
     const dataUser = useSelector(userData);
+    const navigate = useNavigate();
 
     const [data, setData] = useState({
         img: '',
@@ -21,7 +23,22 @@ const DetailedCard = props => {
         especial: ''
     });
 
+    const [userD, setUser] = useState([])
+ 
+    async function fetchUser(){
+        try {
+            await axios.get(`http://localhost:3001/users/get/${dataUser.user._id}`)
+            .then(resp => {
+                setUser(resp);
+               
+            })
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     useEffect(() => {
+      
         async function fetchPoke(){
             try {
                 await axios.get(`https://pokeapi.co/api/v2/pokemon/${props.data.data.name}`)
@@ -41,14 +58,33 @@ const DetailedCard = props => {
                 console.error(error)
             }
         }
+        fetchUser()
         fetchPoke()
+        
+        
     },[])
 
+
+    const captura = () => {
+         
+        let num = 10 - userD.data.pokemons.length;
+        let numR = Math.floor(Math.random()*(10 - 1)+1);
+
+        if (numR>=num) {
+            alert('No has podido capturarlo')
+            
+        }else{
+            addPokemon()
+        }
+    }
+    
     const addPokemon = async(req, res)  =>{
         try {
+            
             const config = {
                 headers: { "Authorization": `Bearer ${dataUser.token}` }
             }
+
             const poke = await axios.put(`http://localhost:3001/users/addpoke/${dataUser.user._id}`, {
                         img: data.img,
                         name: data.name,
@@ -60,9 +96,11 @@ const DetailedCard = props => {
             },config)
             .then(res => {
                 alert('Pokemon capturado :D')
+                navigate('/profile')
             }).catch(err => {
                 console.log(err)
             })
+            
         } catch (error) {
             console.error(error)
         }
@@ -79,7 +117,7 @@ const DetailedCard = props => {
             <p>defensa: {data.defensa} </p>
             <p>especial: {data.especial} </p>
 
-            <button onClick={addPokemon}>Capturar</button>
+            <button onClick={captura}>Capturar</button>
             
         </div>
 
