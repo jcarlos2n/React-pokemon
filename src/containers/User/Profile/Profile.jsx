@@ -18,7 +18,7 @@ const Profile = props => {
         dispatch(logout());
         navigate("/")
     }
-
+    
     useEffect(() => {
 
         if (!dataUser?.user) {
@@ -49,12 +49,12 @@ const Profile = props => {
 
     const PokemonList = () => {
         if (user.length > 0) {
-
+          
             return (
                 <div className="listContainer">
                     <div>
                         <br></br>
-                        <h3>Has logrado capturar {user.length} pokemons, {dataUser.user.nick}</h3>
+                        <h2>Has logrado capturar {user.length} pokemons, {dataUser.user.nick}</h2>
                         <br></br>
                     </div>
                     <div className="list">
@@ -102,11 +102,16 @@ const Profile = props => {
         <div className='profileWall'>
 
             <PokemonList />
-            <button onClick={getOut}> Log out</button>
+            <button onClick={getOut} className='botonProfile'> Log out</button>
 
-            <div>
-                <button onClick={deleteUser}> Delete User</button>
-                <button onClick={()=> navigate('/update')}> Update User</button>
+            
+            <div className='opcionesUser'>
+                <h3>Opciones de usuario</h3>
+                <div>
+                <button onClick={deleteUser} className='botonProfile'> Delete User</button>
+                <button onClick={()=> navigate('/update')} className='botonProfile'> Update User</button>
+                </div>
+                
             </div>
         </div>
     )

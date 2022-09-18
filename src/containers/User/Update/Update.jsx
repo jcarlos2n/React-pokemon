@@ -13,6 +13,9 @@ const Update = props => {
     const [update, setUpdate] = useState({
         nick: ''
     });
+    const [msg, setMsg] = useState({
+        txt: ''
+    })
 
     useEffect(() => {
         if (!userInfo?.user) {
@@ -30,39 +33,50 @@ const Update = props => {
             ...update,
             [e.target.name]: e.target.value
         })
-    }
-    
-    const userUpdate = (e) => async(req,res) => {
-       
-        const config = {
-            headers: { "Authorization": `Bearer ${userInfo.token}` }
-        }
-        await axios.put(`http://localhost:3001/users/update/${userInfo.user._id}`,{
-            nick: update.nick
-        },config).then(res =>{
-            console.log('Update realizado')
-            setTimeout(() => {
-                getOut(),
-                navigate('/')
-            }, 1000);
-        }).catch(err => {
-            console.log('no entro')
-            console.log(err)
-        })
+
     }
 
-    return(
+    const userUpdate = (e) => async (req, res) => {
+        if ((update.nick).length < 6) {
+            setMsg({
+                txt: 'El nick es demasiado corto, tiene que ser mayor de 6 caracteres'
+            })
+            setTimeout(() => {
+                setMsg({
+                    txt: ''
+                })
+            }, 2000);
+        } else {
+            const config = {
+                headers: { "Authorization": `Bearer ${userInfo.token}` }
+            }
+            await axios.put(`http://localhost:3001/users/update/${userInfo.user._id}`, {
+                nick: update.nick
+            }, config).then(res => {
+                setMsg({
+                    txt: 'Usuario actualizado correctamente, vuelva a iniciar sesión'
+                })
+                setTimeout(() => {
+                    getOut(),
+                        navigate('/')
+                }, 2000);
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
+    }
+
+    return (
         <div className="loginWall">
+
             <label className="labelLogin">Nick</label>
             <input onChange={handleInput} className="inputLogin" type="text" name="nick" />
 
-            {/* <label className="labelLogin">Password</label>
-            <input className="inputLogin" type="password" name="password" onChange={updateCredentials}/> */}
-
-            <button onClick={userUpdate()}>Update</button>
+            <button onClick={userUpdate()} className='submitLogin'>Update</button>
 
             <div className="errorMessage">
-                {/* {msgError} */}
+                {msg.txt}
             </div>
         </div>
     )

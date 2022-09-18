@@ -55,7 +55,7 @@ const Login = props => {
             <label className="labelLogin">Password</label>
             <input className="inputLogin" type="password" name="password" onChange={updateCredentials}/>
 
-            <input className="submitLogin" type="submit" value="Log in" onClick={login}/>
+            <button className="submitLogin" onClick={login}>Log in</button>
 
             <div className="errorMessage">
                 {msgError}

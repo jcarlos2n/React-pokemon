@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { registerUser } from '../userSlice';
-import './Signup.css'
+import '../Login/Login.css'
 
 const Signup = props => {
     const dispatch = useDispatch();
@@ -11,6 +11,10 @@ const Signup = props => {
     const [signup, setSignup] = useState({
         nick: '',
         password: ''
+    });
+
+    const [msg, setMsg] = useState({
+        txt: ''
     });
 
     const handleInput = (e) => {
@@ -27,25 +31,44 @@ const Signup = props => {
             ...signup
         })
 
-        dispatch(registerUser(signup.nick, signup.password))
+        if ((signup.nick).length < 6) {
+            setMsg({
+                txt: 'El nick es demasiado corto, tiene que ser mayor de 6 caracteres'
+            })
 
-        alert('Te has registrado correctamente');
+        } else {
+            dispatch(registerUser(signup.nick, signup.password))
 
-            navigate('/')
-     
+            setMsg({
+                txt: 'Te has registrado correctamente'
+            })
+            setTimeout(() => {
+                navigate('/')
+                setMsg({
+                    txt: ''
+                })
+            }, 2000);
+
+        }
+
+
+
     }
 
     return (
-        <div className="signupWall">
+        <div className="loginWall">
 
-                <label className="labelitems">Nick</label>
-                <input onChange={handleInput} className="inputitem" type="text" name="nick" />
+            <label className="labelLogin">Nick</label>
+            <input onChange={handleInput} className="inputLogin" type="text" name="nick" />
 
-                <label className="labelitems">Password</label>
-                <input onChange={handleInput} className="inputitem" type="password" name="password" />
+            <label className="labelLogin">Password</label>
+            <input onChange={handleInput} className="inputLogin" type="password" name="password" />
 
-                <button onClick={userSignup} className=" submitSignupItem" type="submit">Sign Up</button>
+            <button onClick={userSignup} className="submitLogin" type="submit">Sign Up</button>
 
+            <div className="errorMessage">
+                {msg.txt}
+            </div>
         </div>
     )
 

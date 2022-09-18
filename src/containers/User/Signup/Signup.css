@@ -1,9 +1,0 @@
-.signupWall{
-    width: 100vw;
-    height: 93.3vh;
-    background-color: green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
