@@ -13,70 +13,101 @@ const Profile = props => {
 
     const dataUser = useSelector(userData);
     const [user, setUser] = useState([]);
+
     const getOut = () => {
         dispatch(logout());
         navigate("/")
     }
 
-    
-
     useEffect(() => {
-       
+
         if (!dataUser?.user) {
             navigate('/');
-        }else {
-            async function fetchUser(){
-            try {
-                
-                await axios.get(`http://localhost:3001/users/get/${dataUser.user._id}`)
-                .then(resp => {
-                    setUser(resp.data.pokemons);  
-                })
-            } catch (err) {
-                console.error(err)
+        } else {
+            async function fetchUser() {
+                try {
+                    const config = {
+                        headers: { "Authorization": `Bearer ${dataUser.token}` }
+                    }
+
+                    await axios.get(`http://localhost:3001/users/get/${dataUser.user._id}`)
+                        .then(resp => {
+                            setUser(resp.data.pokemons);
+                        })
+                } catch (err) {
+                    console.error(err)
+                }
+
             }
-           
-        }
             fetchUser()
+
+            async function deleteUser() {
+            }
         }
 
-    },[])
-    
-    const PokemonList =  () => {
-            if (user.length > 0) {
-                
-                return (
-                    <div className="listContainer">
-                        <div>
-                            <br></br>
-                            <h3>Has logrado capturar {user.length} pokemons, {dataUser.user.nick}</h3>
-                            <br></br>
-                        </div>
-                        <div className="list">
-                            {
-                                user.map((poke, index) => (
-                                    <PokeCard key={index} data={poke} />
-                                ))
-                            }
-                        </div>
-                    </div>
-                )
-            } else {
-                return (
-                    <div className="elemTitle">
+    }, [])
+
+    const PokemonList = () => {
+        if (user.length > 0) {
+
+            return (
+                <div className="listContainer">
+                    <div>
                         <br></br>
-                        <h3>No Users Registered. We are broke!</h3>
+                        <h3>Has logrado capturar {user.length} pokemons, {dataUser.user.nick}</h3>
                         <br></br>
                     </div>
-                )
-            }
+                    <div className="list">
+                        {
+                            user.map((poke, index) => (
+                                <PokeCard key={index} data={poke} />
+                            ))
+                        }
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div className="elemTitle">
+                    <br></br>
+                    <h3>No Users Registered. We are broke!</h3>
+                    <br></br>
+                </div>
+            )
+        }
     }
 
-    return(
-        
+    let deleteUser = async () => {
+        try {
+            const config = {
+                headers: { "Authorization": `Bearer ${dataUser.token}` }
+            }
+            await axios.delete(`http://localhost:3001/users/delete/${dataUser.user._id}`, config)
+                .then(resp => {
+                    console.log('Usuario eliminado');
+                    getOut()
+                    setTimeout(() => {
+                        navigate('/');
+                    }, 1000);
+                }).catch(err => {
+                    console.error(err);
+                })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    return (
+
         <div className='profileWall'>
-            <PokemonList/>
+
+            <PokemonList />
             <button onClick={getOut}> Log out</button>
+
+            <div>
+                <button onClick={deleteUser}> Delete User</button>
+                <button onClick={()=> navigate('/update')}> Update User</button>
+            </div>
         </div>
     )
 }
