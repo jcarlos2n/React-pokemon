@@ -24,7 +24,7 @@ const Pokemon = props => {
         async function fetchPokemons(){
             await axios.get('https://pokeapi.co/api/v2/pokemon?offset=20&limit=99')
             .then(resp => {
-                // console.log(resp.data.results)
+                
                 setPokemons(resp.data.results);
                 
             }).catch(err => {console.error(err)})

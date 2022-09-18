@@ -4,9 +4,32 @@
     background-color: yellow;
     border: solid black 0.2em;
     width: 25em;
-    height: 30em;
+    height: 25em;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border-radius: 1em;
+}
+
+.pokeImg{
+    margin-top: -3em;
+    height: 15em;
+    margin-bottom: 0;
+}
+
+.pokeName{
+    margin-top: -1em;
+}
+
+.stats{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.datos{
+    margin: 1em;
 }

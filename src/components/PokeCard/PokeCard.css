@@ -1,0 +1,23 @@
+.pokeCard{
+    width: 20em;
+    height: 20em;
+    background-color: aqua;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0.3em;
+}
+
+.stats{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dato{
+    margin: 0.4em;
+}
