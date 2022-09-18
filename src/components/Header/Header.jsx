@@ -11,23 +11,22 @@ const Header = () => {
     if (!dataUser?.token) {
         return (
             <div className="container">
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to='/login'>Log In</NavLink>
-                <NavLink to='/signup'>Sign Up</NavLink>
-                
+                <NavLink to='/' className='links'>Home</NavLink>
+                <NavLink to='/login' className='links'>Log In</NavLink>
+                <NavLink to='/signup' className='links'>Sign Up</NavLink>
+
             </div>
         )
-    }else{
+    } else {
         return (
             <div className="container">
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to='/pokemon'>Pokemon</NavLink>
-                <NavLink to='/profile'>Profile</NavLink>
-                {/* <NavLink></NavLink> */}
+                <NavLink to='/' className='links'>Home</NavLink>
+                <NavLink to='/pokemon' className='links'>Pokemon</NavLink>
+                <NavLink to='/profile' className='links'>{dataUser.user.nick}</NavLink>
             </div>
         )
     }
-    
+
 }
 
 export default Header

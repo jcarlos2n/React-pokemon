@@ -2,8 +2,13 @@
     margin: 0;
     height: 6.6vh;
     width: 100vw;
-    background-color: aqua;
+    background-color: rgba(0, 0, 0, 0.817);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+}
+
+.links{
+    color: white;
+    font-weight: 800;
 }

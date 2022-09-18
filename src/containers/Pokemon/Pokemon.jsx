@@ -58,9 +58,8 @@ const Pokemon = props => {
         if (poke.data !== "") {
             return(
                 <div className='detailedPoke'>
-                    <div onClick={hidePokemon}>
-                        <DetailedCard data={poke}/>
-                    </div>   
+                    <div ><p onClick={hidePokemon} className='close'>X</p></div>   
+                    <DetailedCard data={poke}/>
                 </div>
             )
         }else{

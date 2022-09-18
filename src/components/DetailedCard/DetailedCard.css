@@ -1,10 +1,8 @@
 
 
 .detailedCard{
-    background-color: yellow;
-    border: solid black 0.2em;
-    width: 25em;
-    height: 25em;
+    width: 28em;
+    height: 28em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,5 +29,9 @@
 }
 
 .datos{
+    margin: 1em;
+    font-weight: 600;
+}
+.msg{
     margin: 1em;
 }

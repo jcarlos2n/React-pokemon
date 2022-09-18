@@ -23,6 +23,10 @@ const DetailedCard = props => {
         especial: ''
     });
 
+    const [msg, setMsg] = useState({
+        txt: ''
+    })
+
     const [userD, setUser] = useState([])
 
     async function fetchUser() {
@@ -67,14 +71,23 @@ const DetailedCard = props => {
 
     const captura = () => {
 
-        let num = 10 - userD.data.pokemons.length;
+        let num = 10 - (userD.data.pokemons.length + 1);
         let numR = Math.floor(Math.random() * (10 - 1) + 1);
 
         if (numR >= num) {
-            alert('No has podido capturarlo')
+            setMsg({
+                ...msg,
+                txt: `${props.data.data.name} se ha escapado`
+            })
+            return;
 
         } else {
+            setMsg({
+                txt: 'Lo has capturado'
+            });
             addPokemon()
+            return;
+            
         }
     }
 
@@ -95,8 +108,10 @@ const DetailedCard = props => {
                 especial: data.especial
             }, config)
                 .then(res => {
-                    alert('Pokemon capturado :D')
-                    navigate('/profile')
+                    setTimeout(() => {
+                        navigate('/profile')
+                    }, 1000);
+                    
                 }).catch(err => {
                     console.log(err)
                 })
@@ -110,7 +125,7 @@ const DetailedCard = props => {
         <div className="detailedCard">
 
             <img className="pokeImg" src={data.img} alt="" />
-            <h3 className="pokeName">{data.name}</h3>
+            <h2 className="pokeName">{data.name}</h2>
             <div className="stats">
                 <p className="datos">Experiencia: {data.exp}</p>
                 <p className="datos">Salud: {data.hp}</p>
@@ -119,8 +134,11 @@ const DetailedCard = props => {
                 <p className="datos">Especial: {data.especial} </p>
             </div>
 
-
             <button onClick={captura}>Capturar</button>
+
+            <div className="msg">
+                {msg.txt}
+            </div>
 
         </div>
 
