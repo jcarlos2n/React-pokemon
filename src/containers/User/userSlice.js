@@ -32,7 +32,6 @@ export const userSlice = createSlice({
 export const loginUser = (body) => async (dispatch) => {
     try{
         const user = await axios.post('http://localhost:3001/users/login',body);
-        // console.log(user.data.token)
         let decode = jwt(user.data.token);
         
         if(user.status === 200){

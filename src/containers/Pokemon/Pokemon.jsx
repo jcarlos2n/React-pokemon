@@ -71,20 +71,17 @@ const Pokemon = props => {
 
     const PokemonList = () => {
         if (pokemons.length > 0) {
-            // console.log(pokemons)
             return (
                 
                 pokemons?.map((pokemon, index) => (
                     <div key={index} onClick={(event) => showPokemon(event, pokemon)}>
-                        {/* <Link to='/captura' params={{pokemon}} > */}
+                     
                             <PokemonCard data={pokemon} />
-                        {/* </Link> */}
                         
                     </div>
                 ))
             )
         }else{
-            
             return ( 
                 <div></div>
             )
@@ -96,10 +93,8 @@ const Pokemon = props => {
             
             <PokemonList />
           
-           
         </div>
-    )
-    
+    )  
 }
 
 export default Pokemon

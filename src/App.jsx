@@ -24,16 +24,7 @@ function App() {
           <Route path='/update' element={<Update />} />
         </Routes>
       </HashRouter>
-      {/* <BrowserRouter>
-      <Header/>
-      <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/signup' element={<Signup/>} />
-        <Route path='/pokemon' element={<Pokemon/>} />
-        <Route path='/profile' element={<Profile/>} />
-      </Routes>
-    </BrowserRouter> */}
+     
     </div>
   )
 }
